@@ -661,7 +661,7 @@
 #define X_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.
 
 /**
  * Stepper Drivers
@@ -901,7 +901,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -988,14 +988,14 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 57, -3, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 8000
+#define XY_PROBE_SPEED 10000
 
 // Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1041,7 +1041,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-//#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1149,7 +1149,7 @@
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
-  #define MIN_SOFTWARE_ENDSTOP_Z
+  //#define MIN_SOFTWARE_ENDSTOP_Z
 #endif
 
 // Max software endstops constrain movement within maximum coordinate bounds
@@ -1235,9 +1235,9 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-#define MESH_BED_LEVELING
+//#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
@@ -1282,7 +1282,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5
+  #define GRID_MAX_POINTS_X 3
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1386,7 +1386,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing.
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
@@ -1394,8 +1394,8 @@
 #endif
 
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_XY (20*60)
-#define HOMING_FEEDRATE_Z  (4*60)
+#define HOMING_FEEDRATE_XY (40*60)
+#define HOMING_FEEDRATE_Z  (8*60)
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1504,14 +1504,14 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 185
-#define PREHEAT_1_TEMP_BED     45
-#define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
+#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_BED     55
+#define PREHEAT_1_FAN_SPEED   0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_LABEL       "PETG"
 #define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
-#define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
+#define PREHEAT_2_TEMP_BED    80
+#define PREHEAT_2_FAN_SPEED   0 // Value from 0 to 255
 
 /**
  * Nozzle Park
@@ -1635,7 +1635,7 @@
  *
  * View the current statistics with M78.
  */
-//#define PRINTCOUNTER
+#define PRINTCOUNTER
 
 /**
  * Password
@@ -1812,7 +1812,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
